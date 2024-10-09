@@ -116,25 +116,7 @@ TSet TSet::operator~(void) // дополнение
 
 istream &operator>>(istream &istr, TSet &Set) // ввод
 {
-    TSet Tmp(Set.MaxPower);
-    std::string tmpw = "", s;
-    int i=0, N;
-    istr >> s;
-    while (s[i] != '\0')
-    {
-        if (('0' <= s[i]) && (s[i] <= '9'))
-            tmpw += s[i];
-        else if (s[i] == ' ' && tmpw!="")
-        {
-            Tmp.InsElem(std::stoull(tmpw));
-            tmpw = "";
-        }
-        else throw invalid_argument("Input arguments must be integers deliminated by whitespaces");
-        i++;
-    }
-    if(tmpw!="")
-        Tmp.InsElem(std::stoi(tmpw));
-    Set = Tmp;
+    istr >> Set.BitField;
     return istr;
 }
 
